@@ -14,4 +14,5 @@ public class CreateVehicleRequest {
     private String dueño;
     private String modelo;
 
+
 }
