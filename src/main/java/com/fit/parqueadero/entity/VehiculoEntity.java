@@ -2,14 +2,16 @@ package com.fit.parqueadero.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @Entity
+@NoArgsConstructor
 @Table(name = "VEHICULO_INFO")
 public class VehiculoEntity {
 
