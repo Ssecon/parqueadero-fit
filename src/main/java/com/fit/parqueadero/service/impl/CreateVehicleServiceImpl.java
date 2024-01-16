@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 public class CreateVehicleServiceImpl implements CreateVehicleService {
 
     private final String OK_MESSAGE = "Se creó el vehiculo correctamente.";
+    private final String CREATION_ERROR = "Ocurrio un error al insertar el registro en la base de datos.";
     public CreateVehicleServiceImpl(VehiculoInfoRepository vehiculoInfoRepository) {
         this.vehiculoInfoRepository = vehiculoInfoRepository;
     }
@@ -33,6 +34,7 @@ public class CreateVehicleServiceImpl implements CreateVehicleService {
             log.info("Se inserto el vehiculo de patente {} correctamente!", createVehicleRequest.getPatente());
         } catch (Exception e){
             log.error("Ocurrio un error al insertar el registro en la base de datos. Error: {}",e.getMessage());
+            return new CreateVehicleResponse(CREATION_ERROR);
         }
         return new CreateVehicleResponse(OK_MESSAGE);
     }
