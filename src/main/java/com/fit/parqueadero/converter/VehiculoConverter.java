@@ -5,6 +5,8 @@ import com.fit.parqueadero.dto.findvehicle.VehicleDto;
 import com.fit.parqueadero.entity.VehiculoEntity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VehiculoConverter {
 
@@ -30,6 +32,17 @@ public class VehiculoConverter {
         response.setHoraEntrada(vehiculoEntity.getHoraEntrada());
         response.setId(vehiculoEntity.getId());
 
+        return response;
+    }
+
+    public static List<VehicleDto> generateVehiculoDtoList(List<VehiculoEntity> list){
+        if (null == list){
+            return new ArrayList<>();
+        }
+        List<VehicleDto> response = new ArrayList<>();
+        for (VehiculoEntity v : list){
+            response.add(generateVehiculoDto(v));
+        }
         return response;
     }
 

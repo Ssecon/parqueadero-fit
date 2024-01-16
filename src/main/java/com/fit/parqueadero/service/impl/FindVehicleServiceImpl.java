@@ -8,6 +8,7 @@ import com.fit.parqueadero.service.FindVehicleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -31,5 +32,17 @@ public class FindVehicleServiceImpl implements FindVehicleService {
             log.info("No se encontro ningun vehiculo con patente {}", patente);
             return Optional.empty();
         }
+    }
+
+    @Override
+    public List<VehicleDto> findAllVehicles() {
+        log.info("Comienza la ejecución del metodo findAllVehicles.");
+        List<VehiculoEntity> vehicles = null;
+        try {
+            vehicles = vehiculoInfoRepository.findAll();
+        } catch (Exception e){
+            log.error("Ocurrio un error al consultar la base de datos. Error: {}",e.getMessage());
+        }
+        return VehiculoConverter.generateVehiculoDtoList(vehicles);
     }
 }
